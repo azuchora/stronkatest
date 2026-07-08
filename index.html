@@ -267,7 +267,7 @@ header.nav.hidden{transform:translateY(-100%)}
 .brand .name{font-family:var(--serif);font-size:1.7rem;letter-spacing:.005em;font-weight:500}
 .brand .name .accent{color:var(--gold-2)}
 .brand .sub{font-family:var(--sans);font-size:.56rem;letter-spacing:.4em;text-transform:uppercase;color:var(--muted-d);margin-top:.5rem;padding-left:.1rem}
-.nav-links{display:flex;gap:2.6rem;align-items:center}
+.nav-links{display:flex;gap:2.3rem;align-items:center;margin-left:auto;margin-right:2.6rem}
 .nav-links a{
   color:var(--ivory);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:300;
   position:relative;padding:.3rem 0;opacity:.85;transition:opacity .4s var(--ease);
@@ -291,7 +291,7 @@ header.nav.hidden{transform:translateY(-100%)}
 .mobile-menu{
   position:fixed;inset:0;z-index:1000;
   background:var(--black);
-  display:flex;flex-direction:column;justify-content:center;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
   padding:0 var(--pad);gap:.2rem;
   clip-path:inset(0 0 100% 0);
   transition:clip-path .8s var(--ease);
@@ -393,10 +393,11 @@ header.nav.hidden{transform:translateY(-100%)}
 
 /* Marquee ticker */
 .ticker{background:var(--black);color:var(--ivory);overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1.15rem 0}
-.ticker-track{display:flex;gap:4rem;white-space:nowrap;width:max-content;animation:marquee 40s linear infinite}
-.ticker-track span{font-family:var(--serif);font-size:1.35rem;font-style:italic;color:var(--muted-d);display:inline-flex;align-items:center;gap:4rem}
-.ticker-track span::before{content:"◆";color:var(--gold);font-size:.6rem;font-style:normal}
-@keyframes marquee{to{transform:translateX(-50%)}}
+.ticker-track{display:flex;flex-wrap:nowrap;width:max-content;animation:marquee 34s linear infinite;will-change:transform}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track span{font-family:var(--serif);font-size:1.35rem;font-style:italic;color:var(--muted-d);display:inline-flex;align-items:center;white-space:nowrap;padding:0 2.6rem}
+.ticker-track span::before{content:"◆";color:var(--gold);font-size:.5rem;font-style:normal;margin-right:2.6rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ============================================================
    SECTION SHELL
@@ -404,9 +405,10 @@ header.nav.hidden{transform:translateY(-100%)}
 section{position:relative}
 .section{padding:clamp(5rem,11vh,10rem) var(--pad)}
 .container{max-width:1440px;margin:0 auto}
-.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(3rem,6vh,5rem)}
-.sec-head .title{max-width:20ch}
-.sec-head h2{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:300;letter-spacing:-.02em}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2.5rem 4rem;flex-wrap:wrap;margin-bottom:clamp(3rem,6vh,5rem)}
+.sec-head .title{max-width:none;flex:1 1 auto}
+.sec-head h2{font-size:clamp(2.2rem,5vw,4.2rem);font-weight:300;letter-spacing:-.02em;text-wrap:balance}
+.sec-head .lede{flex:0 1 34ch}
 .sec-head h2 em{font-style:italic;color:var(--bronze)}
 .sec-head .lede{max-width:34ch;color:var(--muted);font-size:1.02rem;font-weight:300}
 .dark-sec{background:var(--black);color:var(--ivory)}
@@ -643,10 +645,12 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
   .testi-grid{grid-template-columns:1fr}
   .craft-strip{grid-template-columns:repeat(2,1fr)}
 }
-@media (max-width:820px){
+@media (max-width:1000px){
   .nav-links,.nav-cta{display:none}
   .burger{display:flex}
   .sticky-call{display:flex}
+}
+@media (max-width:820px){
   .pf-grid{grid-template-columns:repeat(2,1fr)}
   .pf-a,.pf-b,.pf-c,.pf-d,.pf-e,.pf-f,.pf-g{grid-column:span 1;grid-row:span 1;aspect-ratio:1/1}
   .why-grid{grid-template-columns:repeat(2,1fr)}
@@ -733,12 +737,18 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
 <!-- ============ TICKER ============ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span>Granit najwyższej klasy<span>Projekt indywidualny</span></span>
-    <span>Rzeźba i liternictwo<span>Renowacje pomników</span></span>
-    <span>Montaż i wykończenie<span>Ponad 1000 realizacji</span></span>
-    <span>Granit najwyższej klasy<span>Projekt indywidualny</span></span>
-    <span>Rzeźba i liternictwo<span>Renowacje pomników</span></span>
-    <span>Montaż i wykończenie<span>Ponad 1000 realizacji</span></span>
+    <span>Granit najwyższej klasy</span>
+    <span>Projekt indywidualny</span>
+    <span>Rzeźba i liternictwo</span>
+    <span>Renowacje pomników</span>
+    <span>Montaż i wykończenie</span>
+    <span>Ponad 1000 realizacji</span>
+    <span>Granit najwyższej klasy</span>
+    <span>Projekt indywidualny</span>
+    <span>Rzeźba i liternictwo</span>
+    <span>Renowacje pomników</span>
+    <span>Montaż i wykończenie</span>
+    <span>Ponad 1000 realizacji</span>
   </div>
 </div>
 
