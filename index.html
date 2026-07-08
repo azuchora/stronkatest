@@ -444,18 +444,18 @@ section{position:relative}
    ============================================================ */
 .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line)}
 .svc{
-  position:relative;background:var(--graphite);padding:clamp(2.4rem,4vw,3.6rem);
-  min-height:340px;display:flex;flex-direction:column;justify-content:space-between;
-  overflow:hidden;transition:background .6s var(--ease);
+  position:relative;background:var(--graphite);padding:clamp(2.4rem,4vw,3.4rem);
+  min-height:clamp(300px,42vw,380px);display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;
 }
-.svc-bg{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .8s var(--ease)}
-.svc-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4) brightness(.4)}
-.svc:hover .svc-bg{opacity:1}
+.svc-bg{position:absolute;inset:0;z-index:0}
+.svc-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) brightness(.5) contrast(1.05);transition:transform 1.4s var(--ease), filter 1s var(--ease)}
+.svc:hover .svc-bg img{transform:scale(1.06);filter:grayscale(0) brightness(.6)}
+.svc::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg, rgba(11,11,13,.35) 0%, rgba(11,11,13,.5) 50%, rgba(11,11,13,.88) 100%)}
 .svc>*{position:relative;z-index:2}
-.svc .num{font-family:var(--serif);font-size:.95rem;color:var(--gold);font-style:italic;letter-spacing:.1em}
+.svc .num{font-family:var(--serif);font-size:.95rem;color:var(--gold-2);font-style:italic;letter-spacing:.1em}
 .svc h3{font-size:clamp(1.7rem,2.6vw,2.4rem);color:var(--ivory);margin-bottom:.9rem;font-weight:300}
-.svc p{color:var(--muted-d);max-width:32ch;font-size:.98rem;transition:color .6s}
-.svc:hover p{color:var(--ivory)}
+.svc p{color:rgba(247,244,237,.85);max-width:32ch;font-size:.98rem}
 .svc .plus-ico{width:34px;height:34px;position:relative;margin-top:2rem}
 .svc .plus-ico::before,.svc .plus-ico::after{content:"";position:absolute;background:var(--gold);transition:transform .5s var(--ease)}
 .svc .plus-ico::before{top:50%;left:0;width:100%;height:1px;transform:translateY(-50%)}
@@ -472,12 +472,12 @@ section{position:relative}
 .pf-item:hover img{transform:scale(1.08);filter:grayscale(0) brightness(.62)}
 .pf-cap{
   position:absolute;left:0;right:0;bottom:0;z-index:2;
-  padding:1.6rem;transform:translateY(12px);opacity:0;
-  transition:opacity .6s var(--ease), transform .6s var(--ease);
-  background:linear-gradient(0deg,rgba(11,11,13,.85),transparent);
+  padding:1.5rem 1.6rem;
+  background:linear-gradient(0deg,rgba(11,11,13,.92) 0%,rgba(11,11,13,.5) 55%,transparent 100%);
+  transition:transform .6s var(--ease);
 }
-.pf-item:hover .pf-cap{opacity:1;transform:none}
-.pf-cap .k{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.pf-item:hover .pf-cap{transform:translateY(-4px)}
+.pf-cap .k{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-2)}
 .pf-cap h4{font-family:var(--serif);font-size:1.6rem;color:var(--ivory);font-weight:400;margin-top:.3rem}
 .pf-item .view{
   position:absolute;top:1.4rem;right:1.4rem;z-index:2;width:46px;height:46px;border-radius:50%;
@@ -513,21 +513,6 @@ section{position:relative}
 /* ============================================================
    CRAFT (parallax storytelling)
    ============================================================ */
-.craft{position:relative;background:var(--graphite);color:var(--ivory);overflow:hidden;padding:0}
-.craft-hero{position:relative;height:clamp(420px,70vh,760px);overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
-.craft-hero .bg{position:absolute;inset:-10% 0;z-index:1;will-change:transform}
-.craft-hero .bg img{width:100%;height:120%;object-fit:cover;filter:grayscale(.4) brightness(.4) contrast(1.05)}
-.craft-hero::after{content:"";position:absolute;inset:0;z-index:2;background:radial-gradient(circle at 50% 50%, rgba(11,11,13,.3), rgba(11,11,13,.85))}
-.craft-hero .inner{position:relative;z-index:3;padding:0 var(--pad);max-width:900px}
-.craft-hero blockquote{font-family:var(--serif);font-size:clamp(1.7rem,4vw,3.4rem);font-weight:300;line-height:1.18;font-style:italic}
-.craft-hero blockquote em{color:var(--gold-2)}
-.craft-strip{display:grid;grid-template-columns:repeat(4,1fr)}
-.craft-cell{position:relative;aspect-ratio:1/1;overflow:hidden}
-.craft-cell img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) brightness(.7);transition:transform 1.4s var(--ease), filter 1s var(--ease)}
-.craft-cell:hover img{transform:scale(1.08);filter:grayscale(0) brightness(.85)}
-.craft-cell .cc-label{position:absolute;left:1.4rem;bottom:1.3rem;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ivory);z-index:2;opacity:.9}
-.craft-cell::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,11,13,.6),transparent 60%)}
-
 /* ============================================================
    WHY US
    ============================================================ */
@@ -554,7 +539,7 @@ section{position:relative}
    CONTACT
    ============================================================ */
 .contact{background:var(--black);color:var(--ivory)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,6rem)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,6rem);align-items:center}
 .contact h2{font-size:clamp(2.4rem,5.5vw,4.6rem);font-weight:300;margin:1.5rem 0 2rem;max-width:14ch}
 .contact h2 em{font-style:italic;color:var(--gold-2)}
 .contact-info{display:flex;flex-direction:column;gap:0}
@@ -629,7 +614,6 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
   .services-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
   .testi-grid{grid-template-columns:1fr}
-  .craft-strip{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:1000px){
   .nav-links,.nav-cta{display:none}
@@ -646,6 +630,10 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
   .sec-head{align-items:flex-start}
   .hero-scroll{display:none}
   body{padding-bottom:0}
+}
+@media (max-width:620px){
+  .hero-actions{flex-direction:column;align-items:stretch;gap:.9rem}
+  .hero-actions .btn{width:100%;justify-content:center}
 }
 @media (max-width:520px){
   .gen{grid-template-columns:1fr;gap:.3rem}
@@ -680,7 +668,6 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
     <a href="#dziedzictwo">Dziedzictwo</a>
     <a href="#uslugi">Usługi</a>
     <a href="#realizacje">Realizacje</a>
-    <a href="#rzemioslo">Rzemiosło</a>
     <a href="#kontakt">Kontakt</a>
   </nav>
   <a href="#kontakt" class="nav-cta">Umów konsultację</a>
@@ -694,7 +681,6 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
   <a href="#dziedzictwo">Dziedzictwo</a>
   <a href="#uslugi">Usługi</a>
   <a href="#realizacje">Realizacje</a>
-  <a href="#rzemioslo">Rzemiosło</a>
   <a href="#kontakt">Kontakt</a>
   <div class="mobile-meta">+48 600 000 000 · Łódź</div>
 </nav>
@@ -790,11 +776,11 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
         <span class="eyebrow reveal">Usługi</span>
         <h2 class="reveal d1">Rzemiosło w każdym <em>detalu.</em></h2>
       </div>
-      <p class="lede reveal d2">Cztery obszary, w których łączymy indywidualny projekt z najwyższą jakością kamienia.</p>
+      <p class="lede reveal d2">Pełen zakres usług kamieniarskich — od projektu, przez wykonanie, po montaż.</p>
     </div>
     <div class="services-grid">
       <article class="svc reveal">
-        <div class="svc-bg"><img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=1000&q=80" alt="" aria-hidden="true" loading="lazy" /></div>
+        <div class="svc-bg"><img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=1000&q=80" alt="Nagrobek granitowy — realizacja pracowni Igor Kamienie" loading="lazy" /></div>
         <span class="num">01 — Kamień</span>
         <div>
           <h3>Nagrobki granitowe</h3>
@@ -803,7 +789,7 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
         <span class="plus-ico" aria-hidden="true"></span>
       </article>
       <article class="svc reveal d1">
-        <div class="svc-bg"><img src="https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=1000&q=80" alt="" aria-hidden="true" loading="lazy" /></div>
+        <div class="svc-bg"><img src="https://images.unsplash.com/photo-1517816743773-6e0fd518b4a6?auto=format&fit=crop&w=1000&q=80" alt="Rodzinny pomnik granitowy" loading="lazy" /></div>
         <span class="num">02 — Pamięć</span>
         <div>
           <h3>Pomniki rodzinne</h3>
@@ -812,7 +798,7 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
         <span class="plus-ico" aria-hidden="true"></span>
       </article>
       <article class="svc reveal">
-        <div class="svc-bg"><img src="https://images.unsplash.com/photo-1503708928676-1cb796a0891e?auto=format&fit=crop&w=1000&q=80" alt="" aria-hidden="true" loading="lazy" /></div>
+        <div class="svc-bg"><img src="https://images.unsplash.com/photo-1503708928676-1cb796a0891e?auto=format&fit=crop&w=1000&q=80" alt="Renowacja istniejącego pomnika" loading="lazy" /></div>
         <span class="num">03 — Odnowa</span>
         <div>
           <h3>Renowacje</h3>
@@ -821,11 +807,29 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
         <span class="plus-ico" aria-hidden="true"></span>
       </article>
       <article class="svc reveal d1">
-        <div class="svc-bg"><img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=1000&q=80" alt="" aria-hidden="true" loading="lazy" /></div>
+        <div class="svc-bg"><img src="https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=1000&q=80" alt="Wykończenie otoczenia grobu z granitu" loading="lazy" /></div>
         <span class="num">04 — Otoczenie</span>
         <div>
           <h3>Wykończenie grobu</h3>
           <p>Kompleksowe wykonanie otoczenia miejsca pochówku.</p>
+        </div>
+        <span class="plus-ico" aria-hidden="true"></span>
+      </article>
+      <article class="svc reveal">
+        <div class="svc-bg"><img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1000&q=80" alt="Kostka brukowa ułożona wokół miejsca pochówku" loading="lazy" /></div>
+        <span class="num">05 — Bruk</span>
+        <div>
+          <h3>Kostka brukowa</h3>
+          <p>Układanie kostki brukowej wokół grobu oraz na alejkach i dojściach.</p>
+        </div>
+        <span class="plus-ico" aria-hidden="true"></span>
+      </article>
+      <article class="svc reveal d1">
+        <div class="svc-bg"><img src="https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?auto=format&fit=crop&w=1000&q=80" alt="Granitowa ława nagrobna i obrzeże grobu" loading="lazy" /></div>
+        <span class="num">06 — Ława</span>
+        <div>
+          <h3>Ławy nagrobne</h3>
+          <p>Granitowe ławy i obrzeża, które porządkują i chronią otoczenie grobu.</p>
         </div>
         <span class="plus-ico" aria-hidden="true"></span>
       </article>
@@ -880,25 +884,6 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
         <figcaption class="pf-cap"><span class="k">Precyzja</span><h4>Fazowanie krawędzi</h4></figcaption>
       </figure>
     </div>
-  </div>
-</section>
-
-<!-- ============ CRAFT ============ -->
-<section class="craft" id="rzemioslo" aria-label="Rzemiosło">
-  <div class="craft-hero">
-    <div class="bg" id="craftBg">
-      <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2000&q=80" alt="Dłonie rzemieślnika pracujące nad kamieniem" loading="lazy" />
-    </div>
-    <div class="inner">
-      <span class="eyebrow reveal" style="margin-bottom:1.6rem">Rzemiosło</span>
-      <blockquote class="reveal d1">Każdy projekt powstaje z <em>szacunkiem do materiału</em> i historii, którą reprezentuje.</blockquote>
-    </div>
-  </div>
-  <div class="craft-strip">
-    <div class="craft-cell reveal"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=800&q=80" alt="Dłonie przy obróbce kamienia" loading="lazy" /><span class="cc-label">Praca dłutem</span></div>
-    <div class="craft-cell reveal d1"><img src="https://images.unsplash.com/photo-1565607040728-6d0f2b8e5c9a?auto=format&fit=crop&w=800&q=80" alt="Wybór bloku granitu w pracowni" loading="lazy" /><span class="cc-label">Wybór materiału</span></div>
-    <div class="craft-cell reveal d2"><img src="https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&w=800&q=80" alt="Detale warsztatu kamieniarskiego" loading="lazy" /><span class="cc-label">Warsztat</span></div>
-    <div class="craft-cell reveal d3"><img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?auto=format&fit=crop&w=800&q=80" alt="Precyzyjne wykończenie powierzchni kamienia" loading="lazy" /><span class="cc-label">Wykończenie</span></div>
   </div>
 </section>
 
@@ -1021,7 +1006,6 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
         <a href="#dziedzictwo">Dziedzictwo</a>
         <a href="#uslugi">Usługi</a>
         <a href="#realizacje">Realizacje</a>
-        <a href="#rzemioslo">Rzemiosło</a>
         <a href="#kontakt">Kontakt</a>
       </div>
       <div class="foot-col">
@@ -1130,17 +1114,6 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
     });
   }, {threshold:0.6});
   document.querySelectorAll('[data-count]').forEach(function(el){ counted.observe(el); });
-
-  /* ---- Parallax on craft bg ---- */
-  var craftBg = document.getElementById('craftBg');
-  if(craftBg && !reduce){
-    window.addEventListener('scroll', function(){
-      var rect = craftBg.parentElement.getBoundingClientRect();
-      if(rect.bottom < 0 || rect.top > window.innerHeight) return;
-      var prog = (window.innerHeight - rect.top)/(window.innerHeight+rect.height);
-      craftBg.style.transform = 'translateY('+((prog-0.5)*12)+'%)';
-    }, {passive:true});
-  }
 
   /* ---- Lightbox ---- */
   var items = Array.prototype.slice.call(document.querySelectorAll('.pf-item')),
