@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#0b0b0d" />
+<meta name="theme-color" content="#0d1a13" />
 
 <title>Igor Kamienie — Zakład Kamieniarski Łódź | Nagrobki Granitowe</title>
 <meta name="description" content="Rodzinna pracownia kamieniarska. Ponad 50 lat doświadczenia i trzy pokolenia rzemiosła. Nagrobki i pomniki granitowe najwyższej jakości — Łódź, Stryków, Głowno, Zgierz i okolice." />
@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://images.unsplash.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230b0b0d'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' fill='%23b89968' text-anchor='middle'%3EI%3C/text%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230d1a13'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' fill='%23b89968' text-anchor='middle'%3EI%3C/text%3E%3C/svg%3E" />
 
 <!-- Schema.org: LocalBusiness -->
 <script type="application/ld+json">
@@ -148,21 +148,21 @@
    TOKENS
    ============================================================ */
 :root{
-  --black:#0b0b0d;
-  --graphite:#141518;
-  --anthracite:#212327;
-  --stone:#33363c;
-  --ivory:#f7f4ed;
-  --warm-white:#fbf9f4;
-  --paper:#efeae0;
+  --black:#0d1a13;
+  --graphite:#152a1f;
+  --anthracite:#1f362a;
+  --stone:#37483e;
+  --ivory:#f5f4ec;
+  --warm-white:#faf9f3;
+  --paper:#ece9df;
   --gold:#b89968;
   --gold-2:#cbb083;
   --bronze:#8a6d43;
-  --ink:#1a1a1c;
-  --muted:#6d6a63;
-  --muted-d:#9a968c;
+  --ink:#18241d;
+  --muted:#64706a;
+  --muted-d:#97a199;
   --line:rgba(255,255,255,.12);
-  --line-d:rgba(17,17,19,.12);
+  --line-d:rgba(20,38,29,.14);
   --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --sans:'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --ease:cubic-bezier(.19,1,.22,1);
@@ -250,12 +250,12 @@ header.nav{
 }
 header.nav::before{
   content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(180deg, rgba(11,11,13,.65) 0%, rgba(11,11,13,.28) 55%, transparent 100%);
+  background:linear-gradient(180deg, rgba(13,26,19,.65) 0%, rgba(13,26,19,.28) 55%, transparent 100%);
   opacity:1;transition:opacity .6s var(--ease);
 }
 header.nav.solid::before{opacity:0}
 header.nav.solid{
-  background:rgba(11,11,13,.94);
+  background:rgba(13,26,19,.94);
   backdrop-filter:blur(20px) saturate(120%);
   -webkit-backdrop-filter:blur(20px) saturate(120%);
   border-bottom:1px solid rgba(255,255,255,.16);
@@ -451,7 +451,7 @@ section{position:relative}
 .svc-bg{position:absolute;inset:0;z-index:0}
 .svc-bg img{width:100%;height:100%;object-fit:cover;color:transparent;font-size:0;filter:grayscale(.35) brightness(.5) contrast(1.05);transition:transform 1.4s var(--ease), filter 1s var(--ease)}
 .svc:hover .svc-bg img{transform:scale(1.06);filter:grayscale(0) brightness(.6)}
-.svc::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg, rgba(11,11,13,.35) 0%, rgba(11,11,13,.5) 50%, rgba(11,11,13,.88) 100%)}
+.svc::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg, rgba(13,26,19,.35) 0%, rgba(13,26,19,.5) 50%, rgba(13,26,19,.88) 100%)}
 .svc>:not(.svc-bg){position:relative;z-index:2}
 .svc .num{font-family:var(--serif);font-size:.95rem;color:var(--gold-2);font-style:italic;letter-spacing:.1em}
 .svc h3{font-size:clamp(1.7rem,2.6vw,2.4rem);color:var(--ivory);margin-bottom:.9rem;font-weight:300}
@@ -468,7 +468,7 @@ section{position:relative}
 .pf-cap{
   position:absolute;left:0;right:0;bottom:0;z-index:2;
   padding:1.5rem 1.6rem;
-  background:linear-gradient(0deg,rgba(11,11,13,.92) 0%,rgba(11,11,13,.5) 55%,transparent 100%);
+  background:linear-gradient(0deg,rgba(13,26,19,.92) 0%,rgba(13,26,19,.5) 55%,transparent 100%);
   transition:transform .6s var(--ease);
 }
 .pf-item:hover .pf-cap{transform:translateY(-4px)}
@@ -494,7 +494,7 @@ section{position:relative}
 .pf-f{aspect-ratio:16/10}
 
 /* Lightbox */
-.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(6,6,8,.96);display:flex;align-items:center;justify-content:center;padding:5vw;opacity:0;visibility:hidden;transition:opacity .5s var(--ease), visibility .5s}
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(6,13,10,.97);display:flex;align-items:center;justify-content:center;padding:5vw;opacity:0;visibility:hidden;transition:opacity .5s var(--ease), visibility .5s}
 .lightbox.open{opacity:1;visibility:visible}
 .lightbox img{max-width:90vw;max-height:82vh;object-fit:contain;transform:scale(.94);transition:transform .6s var(--ease);box-shadow:0 40px 120px rgba(0,0,0,.6)}
 .lightbox.open img{transform:scale(1)}
