@@ -191,6 +191,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 
 h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.06;letter-spacing:-.01em}
 
+/* Straight, evenly-aligned figures for all numeric displays */
+.stat b,.why-cell b,.gen .yr,.heritage-visual .badge b,[data-count],.hero .eyebrow,.svc .num,.lb-count{
+  font-variant-numeric:lining-nums tabular-nums;
+  font-feature-settings:"lnum" 1,"tnum" 1;
+}
+
 .eyebrow{
   font-family:var(--sans);
   font-size:.72rem;
@@ -226,6 +232,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.06;letter-spa
   transform:translateY(110%);
   animation:rise .9s var(--ease) forwards;
 }
+.loader-mark .accent{font-style:normal;color:var(--gold-2)}
 @keyframes rise{to{transform:translateY(0)}}
 .loader-bar{width:min(220px,40vw);height:1px;background:rgba(255,255,255,.15);position:relative;overflow:hidden}
 .loader-bar::after{content:"";position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);animation:load 1.6s var(--ease-2) forwards}
@@ -235,24 +242,31 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.06;letter-spa
    NAV
    ============================================================ */
 header.nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
+  position:fixed;top:0;left:0;right:0;z-index:1100;
   display:flex;align-items:center;justify-content:space-between;
   padding:1.6rem var(--pad);
   transition:transform .6s var(--ease), background .6s var(--ease), padding .6s var(--ease), border-color .6s var(--ease);
   border-bottom:1px solid transparent;
-  mix-blend-mode:normal;
 }
+header.nav::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg, rgba(11,11,13,.65) 0%, rgba(11,11,13,.28) 55%, transparent 100%);
+  opacity:1;transition:opacity .6s var(--ease);
+}
+header.nav.solid::before{opacity:0}
 header.nav.solid{
-  background:rgba(11,11,13,.82);
-  backdrop-filter:blur(18px) saturate(120%);
-  -webkit-backdrop-filter:blur(18px) saturate(120%);
-  border-bottom:1px solid var(--line);
+  background:rgba(11,11,13,.94);
+  backdrop-filter:blur(20px) saturate(120%);
+  -webkit-backdrop-filter:blur(20px) saturate(120%);
+  border-bottom:1px solid rgba(255,255,255,.16);
+  box-shadow:0 12px 40px -18px rgba(0,0,0,.7);
   padding-top:1.05rem;padding-bottom:1.05rem;
 }
 header.nav.hidden{transform:translateY(-100%)}
 .brand{display:flex;flex-direction:column;line-height:1;color:var(--ivory);z-index:1001}
-.brand .name{font-family:var(--serif);font-size:1.55rem;letter-spacing:.12em}
-.brand .sub{font-family:var(--sans);font-size:.56rem;letter-spacing:.44em;text-transform:uppercase;color:var(--gold-2);margin-top:.42rem;padding-left:.1rem}
+.brand .name{font-family:var(--serif);font-size:1.7rem;letter-spacing:.005em;font-weight:500}
+.brand .name .accent{color:var(--gold-2)}
+.brand .sub{font-family:var(--sans);font-size:.56rem;letter-spacing:.4em;text-transform:uppercase;color:var(--muted-d);margin-top:.5rem;padding-left:.1rem}
 .nav-links{display:flex;gap:2.6rem;align-items:center}
 .nav-links a{
   color:var(--ivory);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:300;
@@ -561,19 +575,26 @@ section{position:relative}
 .ci-row .lab{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
 .ci-row a,.ci-row span{font-family:var(--serif);font-size:1.5rem;color:var(--ivory);transition:color .4s}
 .ci-row a:hover{color:var(--gold)}
-.form{display:flex;flex-direction:column;gap:1.5rem}
+.form{
+  display:flex;flex-direction:column;gap:1.5rem;
+  background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.14);
+  border-top:2px solid var(--gold);
+  padding:clamp(1.8rem,3.4vw,2.9rem);
+  box-shadow:0 30px 70px -40px rgba(0,0,0,.8);
+}
 .field{position:relative}
 .field input,.field textarea{
-  width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);
+  width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.16);
   color:var(--ivory);font-family:var(--sans);font-size:1rem;font-weight:300;
-  padding:1rem 0;letter-spacing:.03em;transition:border-color .4s;
+  padding:1rem 1.1rem;letter-spacing:.03em;transition:border-color .4s, background .4s;
 }
-.field textarea{resize:vertical;min-height:110px}
-.field label{position:absolute;left:0;top:1rem;color:var(--muted-d);font-size:1rem;pointer-events:none;transition:transform .4s var(--ease), color .4s, font-size .4s;letter-spacing:.03em}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+.field textarea{resize:vertical;min-height:120px}
+.field label{position:absolute;left:1.1rem;top:1rem;color:var(--muted-d);font-size:1rem;pointer-events:none;transition:transform .4s var(--ease), color .4s, font-size .4s;letter-spacing:.03em}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);background:rgba(255,255,255,.06)}
 .field input:focus+label,.field textarea:focus+label,
 .field input:not(:placeholder-shown)+label,.field textarea:not(:placeholder-shown)+label{
-  transform:translateY(-1.85rem);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)
+  transform:translateY(-1.85rem) translateX(-1.1rem);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)
 }
 .form .btn{align-self:flex-start;margin-top:.6rem}
 .form-note{font-size:.78rem;color:var(--muted-d);letter-spacing:.04em}
@@ -585,7 +606,8 @@ section{position:relative}
    ============================================================ */
 footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) var(--pad) 2rem;border-top:1px solid var(--line)}
 .foot-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding-bottom:3rem;border-bottom:1px solid var(--line)}
-.foot-brand .name{font-family:var(--serif);font-size:2rem;letter-spacing:.1em}
+.foot-brand .name{font-family:var(--serif);font-size:2rem;letter-spacing:.01em;font-weight:500}
+.foot-brand .name .accent{color:var(--gold-2)}
 .foot-brand .sub{font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-2);margin-top:.5rem}
 .foot-brand p{color:var(--muted-d);max-width:34ch;margin-top:1.4rem;font-size:.92rem}
 .foot-cols{display:flex;gap:clamp(2.5rem,6vw,6rem);flex-wrap:wrap}
@@ -652,14 +674,14 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
 
 <!-- ============ PRELOADER ============ -->
 <div id="loader" aria-hidden="true">
-  <div class="loader-mark"><span>IGOR&nbsp;KAMIENIE</span></div>
+  <div class="loader-mark"><span>igor<em class="accent">kamienie</em></span></div>
   <div class="loader-bar"></div>
 </div>
 
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
   <a href="#top" class="brand" aria-label="Igor Kamienie — strona główna">
-    <span class="name">Igor&nbsp;Kamienie</span>
+    <span class="name">igor<span class="accent">kamienie</span></span>
     <span class="sub">Kamieniarstwo · Łódź · od 1970</span>
   </a>
   <nav class="nav-links" aria-label="Nawigacja główna">
@@ -699,7 +721,7 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
       <span class="line"><i>które pozostają</i></span>
       <span class="line"><i><em>na pokolenia.</em></i></span>
     </h1>
-    <p class="hero-sub">Rodzinne atelier kamieniarskie. Ponad 50 lat doświadczenia i kamień, który zachowuje pamięć na pokolenia.</p>
+    <p class="hero-sub">Rodzinna pracownia kamieniarska. Ponad 50 lat doświadczenia i kamień, który zachowuje pamięć na pokolenia.</p>
     <div class="hero-actions">
       <a href="#realizacje" class="btn btn-gold"><span>Zobacz realizacje</span><span class="arrow"></span></a>
       <a href="#kontakt" class="btn btn-ghost"><span>Umów konsultację</span></a>
@@ -742,7 +764,7 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
           <div class="gen">
             <span class="yr">2018</span>
             <span class="g-name">Syn</span>
-            <span class="g-desc">Prowadzi atelier, łącząc tradycję z technologią.</span>
+            <span class="g-desc">Prowadzi pracownię, łącząc tradycję z nowoczesną technologią.</span>
           </div>
         </div>
       </div>
@@ -893,7 +915,7 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
         <span class="eyebrow dark reveal">Dlaczego my</span>
         <h2 class="reveal d1">Zaufanie budowane <em>latami.</em></h2>
       </div>
-      <p class="lede reveal d2">Liczby, które mówią o rzetelności i konsekwencji rodzinnego atelier.</p>
+      <p class="lede reveal d2">Liczby, które mówią o rzetelności i konsekwencji naszej pracowni.</p>
     </div>
     <div class="why-grid reveal">
       <div class="why-cell"><b data-count="50">0<span class="plus">+</span></b><small>Lat doświadczenia</small></div>
@@ -994,7 +1016,7 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
 <footer>
   <div class="foot-top">
     <div class="foot-brand">
-      <div class="name">Igor Kamienie</div>
+      <div class="name">igor<span class="accent">kamienie</span></div>
       <div class="sub">Kamieniarstwo · Łódź · od 1970</div>
       <p>Rodzinna pracownia kamieniarska. Kamień, który zachowuje pamięć na pokolenia.</p>
     </div>
@@ -1083,6 +1105,7 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
   }
   burger.addEventListener('click', function(){ toggleMenu(); });
   menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ toggleMenu(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && menuOpen) toggleMenu(false); });
 
   /* ---- Reveal on scroll ---- */
   var io = new IntersectionObserver(function(entries){
