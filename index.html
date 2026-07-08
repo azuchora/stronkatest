@@ -216,7 +216,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.06;letter-spa
   background:var(--black);
   display:flex;align-items:center;justify-content:center;
   flex-direction:column;gap:2rem;
-  transition:opacity 1s var(--ease), visibility 1s var(--ease);
+  transition:opacity .5s var(--ease), visibility .5s var(--ease);
 }
 #loader.done{opacity:0;visibility:hidden}
 .loader-mark{
@@ -235,7 +235,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.06;letter-spa
 .loader-mark .accent{font-style:normal;color:var(--gold-2)}
 @keyframes rise{to{transform:translateY(0)}}
 .loader-bar{width:min(220px,40vw);height:1px;background:rgba(255,255,255,.15);position:relative;overflow:hidden}
-.loader-bar::after{content:"";position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);animation:load 1.6s var(--ease-2) forwards}
+.loader-bar::after{content:"";position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);animation:load .7s var(--ease-2) forwards}
 @keyframes load{to{transform:translateX(0)}}
 
 /* ============================================================
@@ -346,7 +346,7 @@ header.nav.hidden{transform:translateY(-100%)}
   padding:clamp(7rem,14vh,10rem) var(--pad) clamp(5rem,12vh,7rem);
   max-width:1500px;margin:0 auto;
 }
-.hero .eyebrow{margin-bottom:2rem;opacity:0;animation:fadeUp 1s var(--ease) 1.9s forwards}
+.hero .eyebrow{margin-bottom:2rem;opacity:0;animation:fadeUp .8s var(--ease) .25s forwards}
 .hero h1{
   color:var(--ivory);
   font-size:clamp(2.6rem,7vw,6.4rem);
@@ -355,22 +355,22 @@ header.nav.hidden{transform:translateY(-100%)}
   letter-spacing:-.015em;
 }
 .hero h1 .line{display:block;overflow:hidden}
-.hero h1 .line i{display:block;font-style:normal;transform:translateY(110%);animation:rise 1.1s var(--ease) forwards}
-.hero h1 .line:nth-child(1) i{animation-delay:1.9s}
-.hero h1 .line:nth-child(2) i{animation-delay:2.05s}
-.hero h1 .line:nth-child(3) i{animation-delay:2.2s}
+.hero h1 .line i{display:block;font-style:normal;transform:translateY(110%);animation:rise .9s var(--ease) forwards}
+.hero h1 .line:nth-child(1) i{animation-delay:.35s}
+.hero h1 .line:nth-child(2) i{animation-delay:.45s}
+.hero h1 .line:nth-child(3) i{animation-delay:.55s}
 .hero h1 em{font-style:italic;color:var(--gold-2)}
 .hero-sub{
   color:var(--muted-d);font-size:clamp(.95rem,1.4vw,1.15rem);letter-spacing:.05em;
   max-width:44ch;margin:2rem 0 2.8rem;font-weight:300;
-  opacity:0;animation:fadeUp 1s var(--ease) 2.5s forwards;
+  opacity:0;animation:fadeUp .8s var(--ease) .7s forwards;
 }
-.hero-actions{display:flex;gap:1.1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 1s var(--ease) 2.7s forwards}
+.hero-actions{display:flex;gap:1.1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s var(--ease) .85s forwards}
 .hero-scroll{
   position:absolute;left:50%;bottom:2rem;transform:translateX(-50%);z-index:3;
   display:flex;flex-direction:column;align-items:center;gap:.9rem;
   color:var(--muted-d);font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;
-  opacity:0;animation:fadeUp 1s var(--ease) 3s forwards;
+  opacity:0;animation:fadeUp .8s var(--ease) 1s forwards;
 }
 .hero-scroll .rail{width:1px;height:54px;background:var(--line);position:relative;overflow:hidden}
 .hero-scroll .rail::after{content:"";position:absolute;top:0;left:0;width:100%;height:40%;background:var(--gold);animation:scrolldot 2.2s var(--ease-2) infinite}
@@ -449,10 +449,10 @@ section{position:relative}
   overflow:hidden;
 }
 .svc-bg{position:absolute;inset:0;z-index:0}
-.svc-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) brightness(.5) contrast(1.05);transition:transform 1.4s var(--ease), filter 1s var(--ease)}
+.svc-bg img{width:100%;height:100%;object-fit:cover;color:transparent;font-size:0;filter:grayscale(.35) brightness(.5) contrast(1.05);transition:transform 1.4s var(--ease), filter 1s var(--ease)}
 .svc:hover .svc-bg img{transform:scale(1.06);filter:grayscale(0) brightness(.6)}
 .svc::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg, rgba(11,11,13,.35) 0%, rgba(11,11,13,.5) 50%, rgba(11,11,13,.88) 100%)}
-.svc>*{position:relative;z-index:2}
+.svc>:not(.svc-bg){position:relative;z-index:2}
 .svc .num{font-family:var(--serif);font-size:.95rem;color:var(--gold-2);font-style:italic;letter-spacing:.1em}
 .svc h3{font-size:clamp(1.7rem,2.6vw,2.4rem);color:var(--ivory);margin-bottom:.9rem;font-weight:300}
 .svc p{color:rgba(247,244,237,.85);max-width:32ch;font-size:.98rem}
@@ -512,10 +512,9 @@ section{position:relative}
    WHY US
    ============================================================ */
 .why{background:var(--warm-white)}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.why-cell{padding:clamp(2rem,3vw,3rem) 1.2rem;text-align:center;border-right:1px solid var(--line-d)}
-.why-cell:last-child{border-right:none}
-.why-cell b{display:block;font-family:var(--serif);font-size:clamp(3rem,6.5vw,5.2rem);font-weight:400;color:var(--ink);line-height:1}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-d)}
+.why-cell{background:var(--warm-white);padding:clamp(2.2rem,3vw,3rem) 1.2rem;text-align:center}
+.why-cell b{display:block;font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,4.6rem);font-weight:400;color:var(--ink);line-height:1}
 .why-cell b .plus{color:var(--gold)}
 .why-cell small{display:block;margin-top:1rem;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
 
@@ -619,11 +618,9 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
   .pf-grid{grid-template-columns:repeat(2,1fr)}
   .pf-a,.pf-b,.pf-c,.pf-d,.pf-e,.pf-f,.pf-g{grid-column:span 1;grid-row:span 1;aspect-ratio:1/1}
   .why-grid{grid-template-columns:repeat(2,1fr)}
-  .why-cell:nth-child(2){border-right:none}
-  .why-cell{border-bottom:1px solid var(--line-d);padding:2.4rem 1rem}
+  .why-cell{padding:2.4rem 1rem}
   .stat-row{grid-template-columns:1fr}
   .sec-head{align-items:flex-start}
-  .hero-scroll{display:none}
   body{padding-bottom:0}
 }
 @media (max-width:620px){
@@ -640,6 +637,8 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   .reveal{opacity:1;transform:none}
   [data-clip]{clip-path:none}
+  /* Don't leave hero content invisible waiting on animation delays */
+  .hero .eyebrow,.hero h1 .line i,.hero-sub,.hero-actions,.hero-scroll{animation-delay:0s !important;opacity:1 !important;transform:none !important}
   /* The ticker is a continuous decorative loop — keep it moving */
   .ticker-track{animation:ticker-marquee 28s linear infinite !important}
 }
@@ -753,12 +752,6 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
           <small>Lat rodzinnej historii</small>
         </div>
       </div>
-    </div>
-
-    <div class="stat-row reveal">
-      <div class="stat"><b>0 zł</b><small>Bezpłatna wycena i projekt</small></div>
-      <div class="stat"><b>24 h</b><small>Odpowiedź na zapytanie</small></div>
-      <div class="stat"><b>5 lat</b><small>Gwarancji na realizację</small></div>
     </div>
   </div>
 </section>
@@ -891,6 +884,8 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
       <div class="why-cell"><b data-count="3">0</b><small>Pokolenia</small></div>
       <div class="why-cell"><b data-count="1000">0<span class="plus">+</span></b><small>Wykonanych realizacji</small></div>
       <div class="why-cell"><b data-count="100">0<span class="plus">%</span></b><small>Indywidualne podejście</small></div>
+      <div class="why-cell"><b>0 zł</b><small>Bezpłatna wycena i projekt</small></div>
+      <div class="why-cell"><b>5 lat</b><small>Gwarancji na realizację</small></div>
     </div>
   </div>
 </section>
@@ -1040,7 +1035,7 @@ footer{background:var(--black);color:var(--ivory);padding:clamp(3rem,6vh,5rem) v
 
   /* ---- Preloader ---- */
   window.addEventListener('load', function(){
-    setTimeout(function(){ document.getElementById('loader').classList.add('done'); }, reduce?100:1500);
+    setTimeout(function(){ document.getElementById('loader').classList.add('done'); }, reduce?60:650);
   });
 
   /* ---- Year ---- */
